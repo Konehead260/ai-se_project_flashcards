@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="JaBarie Kone" />
+    <meta
+      name="description"
+      content="a way to review and memorize key ideas from their coursework using flash cards"
+    />
+    <meta name="keywords" content="keyword1, keyword2, keyword3, etc." />
+    <link rel="icon" href="favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/vendor/normalize.css" />
+    <script type="module" src="./assets/js/index.js"></script>
+    <title>Flash Card App</title>
+  </head>
+  <body class="page">
+    <header class="header">
+      <h1 class="header__title">
+        <a class="header__link" href="#home">Flash Cards</a>
+      </h1>
+      <nav class="nav">
+        <ul class="nav__links">
+          <li><a class="nav__link" href="#home">My Decks</a></li>
+          <li><a class="nav__link" href="#about">About</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main class="page__main-content page__main-content_location_carousel">
+      <section id="home" class="decks">
+        <h2 class="decks__title">My Decks</h2>
+        <div class="wrapping-row">
+          <ul class="decks__list wrapping-row__display-contents">
+            <template id="card-template">
+              <li>
+                <div class="deck deck_color_green">
+                  <a class="deck__link" href="#"></a>
+                  <h3 class="deck__title"></h3>
+                  <div class="deck__row">
+                    <span class="deck__count"></span>
+                    <button type="button" class="deck__delete-btn">
+                      <img src="assets/images/delete.svg" alt="Delete Deck" />
+                    </button>
+                  </div>
+                </div>
+              </li>
+            </template>
+          </ul>
+        </div>
+      </section>
+      <section id="not-found" class="not-found">
+        <h2 class="not-found__status-code">404</h2>
+        <p class="not-found__text">Sorry, nothing found!</p>
+      </section>
+
+      <section id="carousel" class="carousel">
+        <div class="carousel-column">
+          <h2 class="carousel__title"></h2>
+          <div class="carousel-row">
+            <button type="button" class="carousel__btn carousel__btn_type_left">
+              <img src="assets/images/left.svg" alt="Left Card" />
+            </button>
+            <section class="carousel__card">
+              <p class="carousel__card-text"></p>
+            </section>
+
+            <button
+              type="button"
+              class="carousel__btn carousel__btn_type_right"
+            >
+              <img src="assets/images/right.svg" alt="Right card" />
+            </button>
+          </div>
+          <button type="button" class="carousel__btn carousel__btn_type_flip">
+            <img src="assets/images/flip.svg" alt="Flip card" />
+          </button>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <span class="p.footer__text">&copy; 2026 Ja'Barie Kone</span>
+    </footer>
+  </body>
+</html>
