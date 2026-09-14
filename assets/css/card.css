@@ -1,0 +1,86 @@
+.card {
+  width: 325px;
+  height: 205px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.card_color_green {
+  background-color: #64d583;
+}
+
+.card_color_blue {
+  background-color: #91a8f9;
+}
+
+.card_color_pink {
+  background-color: #ee92d7;
+}
+
+.card_color_purple {
+  background-color: #aa8ef0;
+}
+
+.card_color_orange {
+  background-color: #ee955e;
+}
+
+.card_color_yellow {
+  background-color: #f5d770;
+}
+
+.card_color_white {
+  background-color: #ffffff;
+}
+
+.card__title {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.card__link {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.card__count {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.2;
+}
+
+.card__flip-btn {
+  background-color: transparent;
+  opacity: 50%;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  border: none;
+  z-index: 2;
+}
+
+.card__flip-btn:hover {
+  opacity: 100%;
+}
+
+.card__delete-btn {
+  background-color: transparent;
+  opacity: 50%;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  border: none;
+  z-index: 2;
+}
+
+.card__delete-btn:hover {
+  opacity: 100%;
+}
