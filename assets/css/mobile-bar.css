@@ -10,7 +10,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    height: 156px;
+    height: 200px;
     background: linear-gradient(to bottom, transparent 0%, #ececec 35%);
     pointer-events: none;
     z-index: 1;
@@ -36,5 +36,11 @@
     max-width: 353px;
     height: 44px;
     border-radius: 8px;
+  }
+
+  .footer {
+    position: fixed;
+    z-index: 4;
+    bottom: 0px;
   }
 }
