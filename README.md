@@ -6,7 +6,25 @@ each of which can be viewed in a carousel.
 
 ## Features
 
+- Browse flashcard decks from the home view
+- Open individual decks through dynamic hash routes
+- Flip cards to reveal their answers
+- Delete decks and flashcards from the interface
+- Practice cards in a carousel with previous, next, and flip controls
+- Responsive layouts for desktop and mobile screens
+
 ## Technologies used
+
+- HTML5
+- CSS3 with BEM naming and responsive media queries
+- Vanilla JavaScript with ES modules
+- Git and GitHub Pages
+
+## How to use
+
+Open the deployed site or `index.html` in a browser. Select a deck to view its
+cards, choose **Practice** to open the carousel, and use the controls to move
+between cards or reveal an answer.
 
 ## Deployed Site
 
