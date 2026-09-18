@@ -38,6 +38,49 @@
     border-radius: 8px;
   }
 
+  .gallery__new-card-btn,
+  .gallery__practice-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    bottom: 39px;
+    z-index: 3;
+    padding: 12px 0 14px;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1;
+    background-color: #000;
+    color: #fff;
+    height: 44px;
+    border-radius: 8px;
+  }
+
+  .gallery__new-card-btn {
+    width: calc(100% - 40px);
+    max-width: 353px;
+    left: 0;
+    right: 0;
+  }
+
+  .gallery__practice-btn {
+    /* reposition the button */
+    right: 20px;
+    width: calc(50% - 30px);
+    margin: 0;
+  }
+
+  /* New */
+  .gallery__new-card-btn_location_deck-view {
+    left: 20px;
+    right: auto;
+    width: calc(50% - 30px);
+    max-width: none;
+    margin: 0;
+    background-color: #d9d9d9;
+    color: #1a1a1a;
+  }
+
   .footer {
     position: fixed;
     z-index: 4;
