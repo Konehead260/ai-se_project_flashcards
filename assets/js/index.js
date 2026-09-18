@@ -8,11 +8,13 @@ const deckViewSection = document.querySelector("#deck-view");
 const carouselSection = document.querySelector("#carousel");
 const notFoundSection = document.querySelector("#not-found");
 
+const pageEl = document.querySelector(".page");
 const pageContentEl = document.querySelector(".page__main-content");
 const deckTemplateEl = document.querySelector("#card-template");
 const deckContainerEl = homeSection.querySelector(".gallery__list");
 
 function renderHomeView() {
+  pageEl.classList.remove("page_no-mobile-bar");
   homeSection.style.display = "block";
   deckViewSection.style.display = "none";
   carouselSection.style.display = "none";
@@ -20,6 +22,7 @@ function renderHomeView() {
 }
 
 function renderNotFoundView() {
+  pageEl.classList.add("page_no-mobile-bar");
   homeSection.style.display = "none";
   deckViewSection.style.display = "none";
   carouselSection.style.display = "none";
@@ -27,6 +30,7 @@ function renderNotFoundView() {
 }
 
 function renderDeckViewForDeck(deck) {
+  pageEl.classList.remove("page_no-mobile-bar");
   homeSection.style.display = "none";
   deckViewSection.style.display = "block";
   carouselSection.style.display = "none";
@@ -36,6 +40,7 @@ function renderDeckViewForDeck(deck) {
 }
 
 function renderCarouselViewForDeck(deck) {
+  pageEl.classList.add("page_no-mobile-bar");
   homeSection.style.display = "none";
   deckViewSection.style.display = "none";
   carouselSection.style.display = "block";

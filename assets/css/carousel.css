@@ -15,15 +15,24 @@
   color: #1a1a1a80;
 }
 
-.carousel-row {
-  display: flex;
-  align-items: center;
+.carousel-grid {
+  display: grid;
+  grid-template-columns: 44px 440px 44px;
+  grid-template-areas:
+    "left-btn card right-btn"
+    ". flip-btn .";
   justify-content: center;
+  align-items: center;
+  gap: 20px;
+  column-gap: 20px;
+  row-gap: 20px;
 }
 
 .carousel__card {
+  grid-area: card;
   box-sizing: border-box;
-  width: 440px;
+  width: 100%;
+  max-width: 440px;
   height: 300px;
   padding: 20px;
   background-color: #64d583;
@@ -32,7 +41,7 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  margin: 32px 20px 24px;
+  margin: 32px 0 24px;
 }
 
 .carousel__card_color_green {
@@ -87,6 +96,7 @@
 }
 
 .carousel__btn_type_left {
+  grid-area: left-btn;
 }
 
 .carousel__btn_type_left:hover {
@@ -94,6 +104,7 @@
 }
 
 .carousel__btn_type_right {
+  grid-area: right-btn;
 }
 
 .carousel__btn_type_right:hover {
@@ -101,6 +112,8 @@
 }
 
 .carousel__btn_type_flip {
+  grid-area: flip-btn;
+  justify-self: center;
 }
 
 .carousel__btn_type_flip:hover {

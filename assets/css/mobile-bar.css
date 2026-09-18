@@ -81,6 +81,10 @@
     color: #1a1a1a;
   }
 
+  .page_no-mobile-bar .footer {
+    position: static;
+  }
+
   .footer {
     position: fixed;
     z-index: 4;

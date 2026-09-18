@@ -55,4 +55,36 @@
   .page {
     padding: 20px;
   }
+
+  .carousel-grid {
+    grid-template-areas:
+      "card card card"
+      "left-btn flip-btn right-btn";
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .carousel-column,
+  .carousel-grid {
+    width: 100%;
+  }
+
+  .carousel-grid {
+    grid-template-columns: 44px minmax(0, 1fr) 44px;
+    gap: 12px;
+  }
+
+  .carousel__card {
+    width: 100%;
+    max-width: none;
+    height: 420px;
+    margin: 20px 0;
+  }
+
+  .carousel__card-text {
+    max-width: 100%;
+    font-size: 32px;
+    text-align: center;
+    overflow-wrap: anywhere;
+  }
 }
