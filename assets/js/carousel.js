@@ -53,7 +53,7 @@ function renderCarouselView(deck) {
     buttonEl.removeAttribute("disabled");
   }
 
-  rightBtn.addEventListener("click", () => {
+  rightBtn.onclick = () => {
     if (currentIndex < deck.cards.length - 1) {
       currentIndex++;
       showingQuestion = true;
@@ -62,9 +62,9 @@ function renderCarouselView(deck) {
       cardTextEl.textContent = currentCard.question;
       updateDisplay();
     }
-  });
+  };
 
-  leftBtn.addEventListener("click", () => {
+  leftBtn.onclick = () => {
     if (currentIndex > 0) {
       currentIndex--;
       showingQuestion = true;
@@ -73,9 +73,9 @@ function renderCarouselView(deck) {
       cardTextEl.textContent = currentCard.question;
       updateDisplay();
     }
-  });
+  };
 
-  flipBtn.addEventListener("click", () => {
+  flipBtn.onclick = () => {
     const currentCard = deck.cards[currentIndex];
     showingQuestion = !showingQuestion;
 
@@ -86,7 +86,7 @@ function renderCarouselView(deck) {
       cardEl.classList.remove("carousel__card_color_white");
       cardTextEl.textContent = currentCard.question;
     }
-  });
+  };
 
   updateDisplay();
 }

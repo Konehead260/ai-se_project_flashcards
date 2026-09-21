@@ -12,6 +12,15 @@ const pageEl = document.querySelector(".page");
 const pageContentEl = document.querySelector(".page__main-content");
 const deckTemplateEl = document.querySelector("#card-template");
 const deckContainerEl = homeSection.querySelector(".gallery__list");
+const practiceBtn = deckViewSection.querySelector(".gallery__practice-btn");
+
+let currentDeck = null;
+
+practiceBtn.addEventListener("click", () => {
+  if (currentDeck) {
+    window.location.hash = `carousel/${currentDeck.id}`;
+  }
+});
 
 function renderHomeView() {
   pageEl.classList.remove("page_no-mobile-bar");
@@ -30,6 +39,7 @@ function renderNotFoundView() {
 }
 
 function renderDeckViewForDeck(deck) {
+  currentDeck = deck;
   pageEl.classList.remove("page_no-mobile-bar");
   homeSection.style.display = "none";
   deckViewSection.style.display = "block";
@@ -54,6 +64,9 @@ function createDeckEl(deckData) {
 
   const deckLinkEl = cloneEl.querySelector(".card__link");
   deckLinkEl.href = `#deck/${deckData.id}`;
+  deckLinkEl.addEventListener("click", () => {
+    currentDeck = deckData;
+  });
 
   cloneEl.querySelector(".card__title").textContent = deckData.name;
 

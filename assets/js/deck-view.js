@@ -3,14 +3,10 @@ import { hexToString } from "./colors.js";
 function renderDeckView(deck) {
   const deckViewSection = document.querySelector("#deck-view");
   const deckTitleEl = deckViewSection.querySelector(".gallery__title");
-  const practiceBtn = deckViewSection.querySelector(".gallery__practice-btn");
   const cardTemplateEl = deckViewSection.querySelector("#flashcard-template");
   const cardContainerEl = deckViewSection.querySelector(".gallery__list");
 
   deckTitleEl.textContent = deck.name;
-  practiceBtn.onclick = () => {
-    window.location.hash = `carousel/${deck.id}`;
-  };
   cardContainerEl.querySelectorAll(":scope > li").forEach((cardEl) => {
     cardEl.remove();
   });
