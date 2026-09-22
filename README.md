@@ -29,3 +29,8 @@ between cards or reveal an answer.
 ## Deployed Site
 
 Check out [this site](https://Konehead260.github.io/ai-se_project_flashcards) on GitHub Pages.
+
+## Project Pitch Video
+
+Check out [this video](https://drive.google.com/file/d/1s-JAqZaISSzOwYE4eewc6Unsq6xXhqkL/view?usp=drive_link), where I describe my
+project and some challenges I faced while building it.
