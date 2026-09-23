@@ -13,7 +13,7 @@
     height: 200px;
     background: linear-gradient(to bottom, transparent 0%, #ececec 35%);
     pointer-events: none;
-    z-index: 1;
+    z-index: 2;
   }
 
   .gallery__new-card-btn {
@@ -54,6 +54,7 @@
     color: #fff;
     height: 44px;
     border-radius: 8px;
+    z-index: 3;
   }
 
   .gallery__new-card-btn {
@@ -79,6 +80,14 @@
     margin: 0;
     background-color: #d9d9d9;
     color: #1a1a1a;
+  }
+
+  .page_no-mobile-bar {
+    padding: 20px;
+  }
+
+  .page_no-mobile-bar::after {
+    display: none;
   }
 
   .page_no-mobile-bar .footer {

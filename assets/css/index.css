@@ -6,23 +6,10 @@
 @import url("./card.css");
 @import url("./carousel.css");
 @import url("./mobile-bar.css");
+@import url("./not-found.css");
+@import url("./footer.css");
 
-.footer {
-  font-weight: 400;
-  font-size: 16px;
-  letter-spacing: -0.16px;
-  color: #00000080;
-}
-
-.not-found {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding-top: 100px;
-}
-
-@media screen and (max-width: 393px) {
+@media screen and (max-width: 580px) {
   .header__title {
     font-size: 20px;
   }
@@ -61,9 +48,7 @@
       "card card card"
       "left-btn flip-btn right-btn";
   }
-}
 
-@media screen and (max-width: 550px) {
   .carousel-column,
   .carousel-grid {
     width: 100%;
@@ -72,11 +57,12 @@
   .carousel-grid {
     grid-template-columns: 44px minmax(0, 1fr) 44px;
     gap: 12px;
+    justify-items: center;
   }
 
   .carousel__card {
     width: 100%;
-    max-width: none;
+    max-width: 353px;
     height: 420px;
     margin: 20px 0;
   }
