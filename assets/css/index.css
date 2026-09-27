@@ -8,6 +8,7 @@
 @import url("./mobile-bar.css");
 @import url("./not-found.css");
 @import url("./footer.css");
+@import url("./new-deck.css");
 
 @media screen and (max-width: 580px) {
   .header__title {

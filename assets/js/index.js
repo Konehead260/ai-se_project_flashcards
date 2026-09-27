@@ -7,12 +7,14 @@ const homeSection = document.querySelector("#home");
 const deckViewSection = document.querySelector("#deck-view");
 const carouselSection = document.querySelector("#carousel");
 const notFoundSection = document.querySelector("#not-found");
+const newDeckSection = document.querySelector("#new-deck");
 
 const pageEl = document.querySelector(".page");
 const pageContentEl = document.querySelector(".page__main-content");
 const deckTemplateEl = document.querySelector("#card-template");
 const deckContainerEl = homeSection.querySelector(".gallery__list");
 const practiceBtn = deckViewSection.querySelector(".gallery__practice-btn");
+const homeNewDeckBtn = document.querySelector("#home .gallery__new-card-btn");
 
 let currentDeck = null;
 
@@ -22,12 +24,17 @@ practiceBtn.addEventListener("click", () => {
   }
 });
 
+homeNewDeckBtn.addEventListener("click", () => {
+  window.location.hash = "new-deck";
+});
+
 function renderHomeView() {
   pageEl.classList.remove("page_no-mobile-bar");
   homeSection.style.display = "block";
   deckViewSection.style.display = "none";
   carouselSection.style.display = "none";
   notFoundSection.style.display = "none";
+  newDeckSection.style.display = "none";
 }
 
 function renderNotFoundView() {
@@ -36,6 +43,7 @@ function renderNotFoundView() {
   deckViewSection.style.display = "none";
   carouselSection.style.display = "none";
   notFoundSection.style.display = "flex";
+  newDeckSection.style.display = "none";
 }
 
 function renderDeckViewForDeck(deck) {
@@ -45,6 +53,7 @@ function renderDeckViewForDeck(deck) {
   deckViewSection.style.display = "block";
   carouselSection.style.display = "none";
   notFoundSection.style.display = "none";
+  newDeckSection.style.display = "none";
 
   renderDeckView(deck);
 }
@@ -55,8 +64,18 @@ function renderCarouselViewForDeck(deck) {
   deckViewSection.style.display = "none";
   carouselSection.style.display = "block";
   notFoundSection.style.display = "none";
+  newDeckSection.style.display = "none";
 
   renderCarouselView(deck);
+}
+
+function renderNewDeckView() {
+  pageEl.classList.remove("page_no-mobile-bar");
+  homeSection.style.display = "none";
+  deckViewSection.style.display = "none";
+  carouselSection.style.display = "none";
+  notFoundSection.style.display = "none";
+  newDeckSection.style.display = "block";
 }
 
 function createDeckEl(deckData) {
@@ -97,6 +116,9 @@ function router() {
   if (hash === "home" || hash === "") {
     pageContentEl.classList.remove("page__main-content_location_carousel");
     renderHomeView();
+  } else if (hash === "new-deck") {
+    pageContentEl.classList.remove("page__main-content_location_carousel");
+    renderNewDeckView();
   } else if (hash.startsWith("deck/")) {
     pageContentEl.classList.remove("page__main-content_location_carousel");
     const deck = getDeckByID(hash.split("/")[1]);
