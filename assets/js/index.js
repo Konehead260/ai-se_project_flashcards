@@ -2,6 +2,7 @@ import { decks, getDeckByID } from "./decks.js";
 import { hexToString } from "./colors.js";
 import { renderCarouselView } from "./carousel.js";
 import { renderDeckView } from "./deck-view.js";
+import { disableSubmitBtn } from "./new-deck-view.js";
 
 const homeSection = document.querySelector("#home");
 const deckViewSection = document.querySelector("#deck-view");
@@ -118,6 +119,7 @@ function router() {
     renderHomeView();
   } else if (hash === "new-deck") {
     pageContentEl.classList.remove("page__main-content_location_carousel");
+    disableSubmitBtn();
     renderNewDeckView();
   } else if (hash.startsWith("deck/")) {
     pageContentEl.classList.remove("page__main-content_location_carousel");
