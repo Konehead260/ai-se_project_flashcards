@@ -5,7 +5,9 @@ const HEX_DIGITS = /^[0-9a-fA-F]{6}$/;
 const newDeckForm = document.querySelector(".new-deck-view__form");
 const newDeckSubmitBtn = document.querySelector(".new-deck-view__submit-btn");
 const newDeckTextarea = document.querySelector(".new-deck-view__textarea");
-
+const errorModal = document.querySelector("#error-modal");
+const modalCloseBtn = errorModal.querySelector(".modal__close");
+const modalErrorEl = errorModal.querySelector(".modal__error");
 /**
  * Converts a string to a URL-safe slug: lowercase with any run of
  * non-alphanumeric characters replaced by a single hyphen, and no leading or
@@ -41,13 +43,79 @@ function disableSubmitBtn() {
   newDeckSubmitBtn.disabled = false;
 }
 
+function validateName(name) {
+  if (typeof name != "string" || name.length < 2 || name.length > 80) {
+    return null;
+  }
+  return name;
+}
+
+function parseJSON(jsonString) {
+  try {
+    return JSON.parse(jsonString);
+  } catch (error) {
+    return null;
+  }
+}
+
+function showError(message) {
+  modalErrorEl.textContent = message;
+  return;
+}
+
+modalCloseBtn.addEventListener("click", function () {
+  errorModal.classList.remove("modal_visible");
+});
+
 newDeckForm.addEventListener("submit", (evt) => {
   evt.preventDefault();
   const deckData = new FormData(newDeckForm);
   const values = Object.fromEntries(deckData.entries());
-  const jsonData = JSON.parse(values.jsonArray);
+  const jsonData = parseJSON(values.jsonText);
   const normalizedColor = normalizeColor(values.color);
+  let isValid = true;
+
+  if (jsonData === null) {
+    isValid = false;
+    showError("JSON parsing failed");
+    errorModal.classList.add("modal_visible");
+    return;
+  }
+
+  const name = validateName(jsonData.name);
+  if (name === null) {
+    isValid = false;
+    showError("name must be a string between 2 and 80 characters");
+    errorModal.classList.add("modal_visible");
+    return;
+  }
+
   const deckId = `${slugify(jsonData.name)}-${Date.now()}`;
+
+  if (!Array.isArray(jsonData.cards)) {
+    isValid = false;
+    showError("cards must be an array");
+    errorModal.classList.add("modal_visible");
+  }
+
+  const selectedColor = String(values.color ?? "").toLowerCase();
+
+  if (typeof jsonData.color === "string") {
+    const jsonColor = jsonData.color.toLowerCase();
+
+    if (jsonColor !== selectedColor) {
+      showError(
+        `The JSON color (${jsonColor}) does not match the selected color (${selectedColor}).`,
+      );
+      isValid = false;
+      errorModal.classList.add("modal_visible");
+      return;
+    }
+  }
+
+  if (!isValid) {
+    return;
+  }
 
   // Declare a deck object variable
   const deck = {

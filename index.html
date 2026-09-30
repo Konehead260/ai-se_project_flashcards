@@ -169,12 +169,12 @@
               />
             </label>
           </fieldset>
-          <label class="new-deck-view__textarea-label" for="jsonArray">
+          <label class="new-deck-view__textarea-label" for="jsonText">
             Write the JSON array of cards so that it matches this schema
             <textarea
               class="new-deck-view__textarea"
-              id="jsonArray"
-              name="jsonArray"
+              id="jsonText"
+              name="jsonText"
             ></textarea>
           </label>
           <button class="new-deck-view__submit-btn" type="submit" disabled>
@@ -206,6 +206,14 @@
           </div>
         </div>
       </section>
+
+      <div class="modal" id="error-modal">
+        <div class="modal__content">
+          <h2 class="modal__title">An error has occured</h2>
+          <p class="modal__error"></p>
+          <button class="modal__close" type="button"></button>
+        </div>
+      </div>
     </main>
     <footer class="footer">
       <span class="p.footer__text">&copy; 2026 Ja'Barie Kone</span>
