@@ -5,14 +5,22 @@ const headers = {
 };
 
 function processResponse(res) {
-  if (res.ok) {
-    return res.json();
+  if (!res.ok) {
+    return Promise.reject(`Error: ${res.status}`);
   }
-  return Promise.reject(`Error: ${res.status}`);
+
+  return res.status === 204 ? null : res.json();
 }
 
 function getDecks() {
   return fetch(`${baseUrl}/decks`, { headers }).then(processResponse);
 }
 
-export { getDecks };
+function deleteDeck(deckId) {
+  return fetch(`${baseUrl}/decks/${deckId}`, {
+    method: "DELETE",
+    headers,
+  }).then(processResponse);
+}
+
+export { getDecks, deleteDeck };

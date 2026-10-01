@@ -3,7 +3,7 @@ import { hexToString } from "./colors.js";
 import { renderCarouselView } from "./carousel.js";
 import { renderDeckView } from "./deck-view.js";
 import { disableSubmitBtn } from "./new-deck-view.js";
-import { getDecks } from "./api.js";
+import { getDecks, deleteDeck } from "./api.js";
 import { showError } from "./new-deck-view.js";
 
 const homeSection = document.querySelector("#home");
@@ -100,7 +100,19 @@ function createDeckEl(deckData) {
 
   const deleteBtn = cloneEl.querySelector(".card__delete-btn");
   deleteBtn.addEventListener("click", () => {
-    cloneEl.remove();
+    deleteDeck(deckData._id)
+      .then(() => {
+        cloneEl.remove();
+
+        const deckIndex = fetchedDecks.findIndex(
+          (deck) => deck._id === deckData._id,
+        );
+
+        if (deckIndex !== -1) {
+          fetchedDecks.splice(deckIndex, 1);
+        }
+      })
+      .catch(showError);
   });
 
   return cloneEl;
