@@ -1,4 +1,4 @@
-import { decks, getDeckByID } from "./decks.js";
+import { getDeckByID, fetchedDecks } from "./decks.js";
 import { hexToString } from "./colors.js";
 import { renderCarouselView } from "./carousel.js";
 import { renderDeckView } from "./deck-view.js";
@@ -23,7 +23,7 @@ let currentDeck = null;
 
 practiceBtn.addEventListener("click", () => {
   if (currentDeck) {
-    window.location.hash = `carousel/${currentDeck.id}`;
+    window.location.hash = `carousel/${currentDeck._id}`;
   }
 });
 
@@ -85,7 +85,7 @@ function createDeckEl(deckData) {
   const cloneEl = deckTemplateEl.content.querySelector("li").cloneNode(true);
 
   const deckLinkEl = cloneEl.querySelector(".card__link");
-  deckLinkEl.href = `#deck/${deckData.id}`;
+  deckLinkEl.href = `#deck/${deckData._id}`;
   deckLinkEl.addEventListener("click", () => {
     currentDeck = deckData;
   });
@@ -149,6 +149,7 @@ function router() {
 window.addEventListener("DOMContentLoaded", () => {
   getDecks()
     .then((decks) => {
+      fetchedDecks.push(...decks);
       decks.forEach(renderDeckEl);
     })
     .catch(showError)

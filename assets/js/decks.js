@@ -1,6 +1,8 @@
+const fetchedDecks = [];
+
 const decks = [
   {
-    id: "html-basics",
+    _id: "html-basics",
     name: "HTML Basics",
     description: "Core HTML tags and concepts",
     cards: [
@@ -58,7 +60,7 @@ const decks = [
     color: "#64d583",
   },
   {
-    id: "html-semantic",
+    _id: "html-semantic",
     name: "Semantic HTML",
     description: "Meaningful HTML elements for structure and accessibility",
     cards: [
@@ -125,7 +127,7 @@ const decks = [
     color: "#91a8f9",
   },
   {
-    id: "css-fundamentals",
+    _id: "css-fundamentals",
     name: "CSS Fundamentals",
     description: "Selectors, properties, and the cascade",
     cards: [
@@ -185,7 +187,7 @@ const decks = [
     color: "#ee955e",
   },
   {
-    id: "css-box-model",
+    _id: "css-box-model",
     name: "CSS Box Model",
     description: "Content, padding, border, and margin",
     cards: [
@@ -250,7 +252,7 @@ const decks = [
     color: "#ee92d7",
   },
   {
-    id: "css-flexbox",
+    _id: "css-flexbox",
     name: "CSS Flexbox",
     description: "Flexible layout with Flexbox",
     cards: [
@@ -313,7 +315,7 @@ const decks = [
     color: "#aa8ef0",
   },
   {
-    id: "js-basics",
+    _id: "js-basics",
     name: "JavaScript Basics",
     description: "Variables, types, and operators",
     cards: [
@@ -374,7 +376,7 @@ const decks = [
     color: "#f5d770",
   },
   {
-    id: "js-functions",
+    _id: "js-functions",
     name: "JavaScript Functions",
     description: "Declaring, calling, and passing functions",
     cards: [
@@ -439,7 +441,7 @@ const decks = [
     color: "#64d583",
   },
   {
-    id: "js-arrays",
+    _id: "js-arrays",
     name: "JavaScript Arrays",
     description: "Working with lists of data",
     cards: [
@@ -504,7 +506,7 @@ const decks = [
     color: "#91a8f9",
   },
   {
-    id: "js-dom",
+    _id: "js-dom",
     name: "JavaScript DOM",
     description: "Selecting and manipulating elements on the page",
     cards: [
@@ -566,7 +568,7 @@ const decks = [
     color: "#ee955e",
   },
   {
-    id: "web-tech-terms",
+    _id: "web-tech-terms",
     name: "Web Tech Terms",
     description: "Foundational vocabulary for how the web works",
     cards: [
@@ -630,7 +632,7 @@ const decks = [
     color: "#ee92d7",
   },
   {
-    id: "dev-tools",
+    _id: "dev-tools",
     name: "Developer Tools",
     description: "Using the browser DevTools to inspect and debug",
     cards: [
@@ -696,7 +698,7 @@ const decks = [
     color: "#aa8ef0",
   },
   {
-    id: "git-basics",
+    _id: "git-basics",
     name: "Git Basics",
     description: "Version control with Git",
     cards: [
@@ -766,7 +768,7 @@ const decks = [
  * @returns {object|undefined} The deck object if found, undefined otherwise
  */
 function getDeckByID(deckId) {
-  return decks.find((deck) => deck.id === deckId);
+  return fetchedDecks.find((deck) => deck._id === deckId);
 }
 
-export { decks, getDeckByID };
+export { decks, getDeckByID, fetchedDecks };

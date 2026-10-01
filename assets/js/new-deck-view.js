@@ -1,4 +1,4 @@
-import { decks, getDeckByID } from "./decks.js";
+import { fetchedDecks } from "./decks.js";
 
 const HEX_DIGITS = /^[0-9a-fA-F]{6}$/;
 
@@ -119,14 +119,14 @@ newDeckForm.addEventListener("submit", (evt) => {
 
   // Declare a deck object variable
   const deck = {
-    id: deckId,
+    _id: deckId,
     color: normalizedColor,
     cards: jsonData.cards,
     name: jsonData.name,
   };
 
-  decks.push(deck);
-  window.location.hash = "deck/" + deck.id;
+  fetchedDecks.push(deck);
+  window.location.hash = "deck/" + deck._id;
 });
 
 export { disableSubmitBtn, showError };
