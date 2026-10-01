@@ -3,6 +3,8 @@ import { hexToString } from "./colors.js";
 import { renderCarouselView } from "./carousel.js";
 import { renderDeckView } from "./deck-view.js";
 import { disableSubmitBtn } from "./new-deck-view.js";
+import { getDecks } from "./api.js";
+import { showError } from "./new-deck-view.js";
 
 const homeSection = document.querySelector("#home");
 const deckViewSection = document.querySelector("#deck-view");
@@ -109,8 +111,6 @@ function renderDeckEl(item) {
   deckContainerEl.prepend(deckEl);
 }
 
-decks.forEach(renderDeckEl);
-
 function router() {
   const hash = window.location.hash.slice(1) || "home";
 
@@ -146,5 +146,14 @@ function router() {
   }
 }
 
-window.addEventListener("DOMContentLoaded", router);
+window.addEventListener("DOMContentLoaded", () => {
+  getDecks()
+    .then((decks) => {
+      decks.forEach(renderDeckEl);
+    })
+    .catch(showError)
+    .finally(() => {
+      router();
+    });
+});
 window.addEventListener("hashchange", router);

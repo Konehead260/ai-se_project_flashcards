@@ -129,4 +129,4 @@ newDeckForm.addEventListener("submit", (evt) => {
   window.location.hash = "deck/" + deck.id;
 });
 
-export { disableSubmitBtn };
+export { disableSubmitBtn, showError };
