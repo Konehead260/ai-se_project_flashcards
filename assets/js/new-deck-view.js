@@ -1,4 +1,5 @@
 import { fetchedDecks } from "./decks.js";
+import { addDeck } from "./api.js";
 
 const HEX_DIGITS = /^[0-9a-fA-F]{6}$/;
 
@@ -60,6 +61,7 @@ function parseJSON(jsonString) {
 
 function showError(message) {
   modalErrorEl.textContent = message;
+  errorModal.classList.add("modal_visible");
   return;
 }
 
@@ -90,8 +92,6 @@ newDeckForm.addEventListener("submit", (evt) => {
     return;
   }
 
-  const deckId = `${slugify(jsonData.name)}-${Date.now()}`;
-
   if (!Array.isArray(jsonData.cards)) {
     isValid = false;
     showError("cards must be an array");
@@ -119,14 +119,26 @@ newDeckForm.addEventListener("submit", (evt) => {
 
   // Declare a deck object variable
   const deck = {
-    _id: deckId,
     color: normalizedColor,
     cards: jsonData.cards,
     name: jsonData.name,
   };
 
-  fetchedDecks.push(deck);
-  window.location.hash = "deck/" + deck._id;
+  addDeck(deck)
+    .then((createdDeck) => {
+      const deckForApp = {
+        ...createdDeck,
+        cards: deck.cards,
+      };
+      fetchedDecks.push(deckForApp);
+
+      window.dispatchEvent(
+        new CustomEvent("deck-created", { detail: deckForApp }),
+      );
+
+      window.location.hash = "deck/" + deckForApp._id;
+    })
+    .catch(showError);
 });
 
 export { disableSubmitBtn, showError };

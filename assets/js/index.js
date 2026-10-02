@@ -123,6 +123,10 @@ function renderDeckEl(item) {
   deckContainerEl.prepend(deckEl);
 }
 
+window.addEventListener("deck-created", (event) => {
+  renderDeckEl(event.detail);
+});
+
 function router() {
   const hash = window.location.hash.slice(1) || "home";
 

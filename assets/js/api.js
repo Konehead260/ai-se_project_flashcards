@@ -9,11 +9,19 @@ function processResponse(res) {
     return Promise.reject(`Error: ${res.status}`);
   }
 
-  return res.status === 204 ? null : res.json();
+  return res.json();
 }
 
 function getDecks() {
   return fetch(`${baseUrl}/decks`, { headers }).then(processResponse);
+}
+
+function addDeck(deck) {
+  return fetch(`${baseUrl}/decks`, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(deck),
+  }).then(processResponse);
 }
 
 function deleteDeck(deckId) {
@@ -23,4 +31,4 @@ function deleteDeck(deckId) {
   }).then(processResponse);
 }
 
-export { getDecks, deleteDeck };
+export { getDecks, deleteDeck, addDeck };
