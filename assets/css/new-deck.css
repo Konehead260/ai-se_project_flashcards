@@ -1,4 +1,7 @@
 .new-deck-view {
+  width: min(100%, 670px);
+  margin-inline: auto;
+  margin-top: 104px;
 }
 
 .new-deck-view__title {

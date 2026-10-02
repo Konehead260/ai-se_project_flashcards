@@ -1,0 +1,25 @@
+.about {
+  width: min(100%, 670px);
+  margin-inline: auto;
+  margin-top: 104px;
+}
+
+.about__title {
+  font-weight: 700;
+  font-size: 40px;
+}
+
+.about__text {
+  font-weight: 400;
+  font-size: 18px;
+}
+
+pre {
+  border-radius: 8px;
+  background-color: #1a1a1acc;
+  padding: 10px 12px;
+}
+
+pre code {
+  color: #ffffff;
+}

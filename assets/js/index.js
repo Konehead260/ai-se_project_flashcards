@@ -11,6 +11,7 @@ const deckViewSection = document.querySelector("#deck-view");
 const carouselSection = document.querySelector("#carousel");
 const notFoundSection = document.querySelector("#not-found");
 const newDeckSection = document.querySelector("#new-deck");
+const aboutSection = document.querySelector("#about");
 
 const pageEl = document.querySelector(".page");
 const pageContentEl = document.querySelector(".page__main-content");
@@ -38,6 +39,7 @@ function renderHomeView() {
   carouselSection.style.display = "none";
   notFoundSection.style.display = "none";
   newDeckSection.style.display = "none";
+  aboutSection.style.display = "none";
 }
 
 function renderNotFoundView() {
@@ -47,6 +49,7 @@ function renderNotFoundView() {
   carouselSection.style.display = "none";
   notFoundSection.style.display = "flex";
   newDeckSection.style.display = "none";
+  aboutSection.style.display = "none";
 }
 
 function renderDeckViewForDeck(deck) {
@@ -57,6 +60,7 @@ function renderDeckViewForDeck(deck) {
   carouselSection.style.display = "none";
   notFoundSection.style.display = "none";
   newDeckSection.style.display = "none";
+  aboutSection.style.display = "none";
 
   renderDeckView(deck);
 }
@@ -68,6 +72,7 @@ function renderCarouselViewForDeck(deck) {
   carouselSection.style.display = "block";
   notFoundSection.style.display = "none";
   newDeckSection.style.display = "none";
+  aboutSection.style.display = "none";
 
   renderCarouselView(deck);
 }
@@ -79,6 +84,17 @@ function renderNewDeckView() {
   carouselSection.style.display = "none";
   notFoundSection.style.display = "none";
   newDeckSection.style.display = "block";
+  aboutSection.style.display = "none";
+}
+
+function renderAboutView() {
+  pageEl.classList.remove("page_no-mobile-bar");
+  homeSection.style.display = "none";
+  deckViewSection.style.display = "none";
+  carouselSection.style.display = "none";
+  notFoundSection.style.display = "none";
+  newDeckSection.style.display = "none";
+  aboutSection.style.display = "block";
 }
 
 function createDeckEl(deckData) {
@@ -133,6 +149,9 @@ function router() {
   if (hash === "home" || hash === "") {
     pageContentEl.classList.remove("page__main-content_location_carousel");
     renderHomeView();
+  } else if (hash === "about") {
+    pageContentEl.classList.remove("page__main-content_location_carousel");
+    renderAboutView();
   } else if (hash === "new-deck") {
     pageContentEl.classList.remove("page__main-content_location_carousel");
     disableSubmitBtn();
