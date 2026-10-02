@@ -40,10 +40,16 @@ function normalizeColor(color) {
   return "#" + hex.toLowerCase();
 }
 
+/** Enables the new-deck form's submit button. */
 function disableSubmitBtn() {
   newDeckSubmitBtn.disabled = false;
 }
 
+/**
+ * Validates the deck name's type and allowed length.
+ * @param {*} name - The candidate deck name.
+ * @returns {string|null} The name when valid, otherwise `null`.
+ */
 function validateName(name) {
   if (typeof name != "string" || name.length < 2 || name.length > 80) {
     return null;
@@ -51,6 +57,11 @@ function validateName(name) {
   return name;
 }
 
+/**
+ * Parses JSON text, returning `null` if the text is invalid.
+ * @param {string} jsonString - JSON text from the form textarea.
+ * @returns {unknown|null} The parsed JSON value, or `null` on a parse error.
+ */
 function parseJSON(jsonString) {
   try {
     return JSON.parse(jsonString);
@@ -59,16 +70,22 @@ function parseJSON(jsonString) {
   }
 }
 
+/** Updates the error modal's message and displays the modal.
+ * @param {string} message - The error message to display.
+ * @returns {void}
+ */
 function showError(message) {
   modalErrorEl.textContent = message;
   errorModal.classList.add("modal_visible");
   return;
 }
 
+/** Hides the error modal when its close button is clicked. */
 modalCloseBtn.addEventListener("click", function () {
   errorModal.classList.remove("modal_visible");
 });
 
+/** Validates the form data and submits a valid deck to the API. */
 newDeckForm.addEventListener("submit", (evt) => {
   evt.preventDefault();
   const deckData = new FormData(newDeckForm);
@@ -125,6 +142,7 @@ newDeckForm.addEventListener("submit", (evt) => {
   };
 
   addDeck(deck)
+    /** Adds the API-created deck to the local cache and opens its detail view. */
     .then((createdDeck) => {
       const deckForApp = {
         ...createdDeck,
