@@ -61,4 +61,6 @@ not be opened directly with a `file://` URL.
 
 ## Project Pitch Videos
 
-- [Project pitch video](https://drive.google.com/file/d/1s-JAqZaISSzOwYE4eewc6Unsq6xXhqkL/view?usp=drive_link)
+- [ Project pitch video #1 ](https://drive.google.com/file/d/1s-JAqZaISSzOwYE4eewc6Unsq6xXhqkL/view?usp=drive_link)
+
+[ Project pitch video #2 ](https://drive.google.com/file/d/1_qf2qChwBAbaKbsCmxh1TShCHzb23c7f/view?usp=drive_link)
